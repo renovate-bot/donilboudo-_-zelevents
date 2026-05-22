@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-noir: #0a0a0a;
+  --color-charbon: #141414;
+  --color-blanc: #ffffff;
+  --color-creme: #faf7f4;
+  --color-creme-fonce: #f0ebe6;
+  --color-bordeaux: #5c1f2e;
+  --color-bordeaux-fonce: #3d121c;
+  --color-bordeaux-pale: #f5ecee;
+  --color-gris-fonce: #1f1d1b;
+  --color-gris: #6b6560;
+  --color-gris-clair: #a39e98;
+  --color-or: #c9a84c;
+  --color-or-clair: #e8c97a;
+  --color-or-sombre: #9a7332;
+  --color-erreur: #b91c1c;
+
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-source-sans), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0a0a0a;
+  color: #f5f2ef;
+  font-family: var(--font-source-sans), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-up-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.animate-fade-up-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.animate-fade-up-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.55) 0%,
+    rgba(10, 10, 10, 0.75) 50%,
+    rgba(10, 10, 10, 0.92) 100%
+  );
+}
+
+.section-label {
+  @apply font-sans text-sm font-semibold text-or tracking-[0.12em] uppercase mb-4 block;
+}
+
+.section-title {
+  @apply font-serif text-3xl md:text-[2.35rem] leading-[1.2] mb-6 font-normal;
+}
+
+.section-title-light {
+  @apply text-bordeaux-fonce;
+}
+
+.section-title-dark {
+  @apply text-blanc;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center font-sans text-sm font-semibold tracking-[0.08em] uppercase bg-or text-noir px-8 py-4 transition-all duration-300 hover:bg-or-clair;
+}
+
+.btn-outline-gold {
+  @apply inline-flex items-center justify-center font-sans text-sm font-medium tracking-[0.08em] uppercase border border-or text-or px-8 py-4 transition-all duration-300 hover:bg-or hover:text-noir;
+}
+
+.btn-outline-light {
+  @apply inline-flex items-center justify-center font-sans text-sm font-medium tracking-[0.08em] uppercase border border-blanc/60 text-blanc px-8 py-4 transition-all duration-300 hover:border-or hover:text-or-clair;
+}
+
+.body-text {
+  @apply font-sans text-base leading-relaxed text-blanc/85;
+}
+
+.label-text {
+  @apply font-sans text-sm font-medium tracking-[0.06em] uppercase text-blanc/70;
+}
+
+.gold-line {
+  @apply h-px w-12 bg-or/60;
+}
+
+.service-card {
+  @apply border border-or/40 bg-noir p-8 md:p-10 text-center transition-all duration-500 hover:bg-bordeaux hover:border-bordeaux;
+}
+
+.gallery-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #c9a84c #f0ebe6;
+}
+
+.gallery-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-scroll::-webkit-scrollbar-track {
+  background: #f0ebe6;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb {
+  background: #c9a84c;
+  border-radius: 3px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.35);
+  cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1.25rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background-color: #c9a84c;
+  color: #0a0a0a;
+  font-family: var(--font-source-sans), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
